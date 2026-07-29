@@ -53,14 +53,19 @@ Command to create ECS Service (Blue/Green with CODE_DEPLOY deployment controller
 
 ```sh
 aws ecs create-service \
-    --cluster mycluster \
-    --service-name my-svc \
-    --task-definition my-td:1 \
+    --cluster lab14-cluster \
+    --service-name lab14 \
+    --task-definition lab14-taskdefi:2 \
     --deployment-controller type=CODE_DEPLOY \
     --desired-count 2 \
     --launch-type FARGATE \
-    --network-configuration "awsvpcConfiguration={subnets=[subnet-0aff4ca2a21fb79b0,subnet-0faac0a4333c18e6f],securityGroups=[sg-01c828e9581d09303],assignPublicIp=ENABLED}" \
-    --load-balancers "[{\"targetGroupArn\": \"arn:aws:elasticloadbalancing:ap-southeast-1:123456789012:targetgroup/tg-blue/912c3062848e55ff\", \"containerName\": \"example\", \"containerPort\": 3001}]"
+    --network-configuration "awsvpcConfiguration={subnets=[subnet-091150d23bd715eb1,subnet-05bf22df45f3f680b],securityGroups=[sg-0109681d325aa4710],assignPublicIp=DISABLED}" \
+    --load-balancers "[{\"targetGroupArn\": \"arn:aws:elasticloadbalancing:ap-southeast-1:325866320827:targetgroup/lab14-blue/3c48f134fa467b11\", \"containerName\": \"lab14\", \"containerPort\": 3001}]"
+
+## Verify
+aws ecs list-task-definitions --family-prefix lab14-taskdefi:2 --region ap-southeast-1
+
+aws ecs describe-task-definition --task-definition lab14-taskdefi:2 --region ap-southeast-1
 ```
 ---
 
@@ -240,9 +245,9 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: <TASK_DEFINITION>
+        TaskDefinition: arn:aws:ecs:ap-southeast-1:325866320827:task-definition/lab14-taskdefi:2
         LoadBalancerInfo:
-          ContainerName: "example"
+          ContainerName: "lab14"
           ContainerPort: 3001
 ```
 
