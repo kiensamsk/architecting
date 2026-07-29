@@ -35,8 +35,8 @@ phases:
       - echo Moving imagedefinitions.json to $CODEBUILD_SRC_DIR for CodePipeline...
       - mv imagedefinitions.json $CODEBUILD_SRC_DIR/imagedefinitions.json
       - echo moving appspec-ecs.yaml to $CODEBUILD_SRC_DIR for CodePipeline...
-      - mv appspec-ecs.yaml $CODEBUILD_SRC_DIR/appspec-ecs.yaml
-      - mv taskdef-ecs.json $CODEBUILD_SRC_DIR/taskdef-ecs.json
+      - mv ../specs/appspec-ecs.yaml $CODEBUILD_SRC_DIR/appspec.yaml
+      - mv ../specs/taskdef-ecs.json $CODEBUILD_SRC_DIR/taskdef.json
       - echo Listing files in $CODEBUILD_SRC_DIR... 
       - ls -la 
 artifacts:
