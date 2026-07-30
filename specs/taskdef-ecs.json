@@ -4,7 +4,7 @@
   "requiresCompatibilities": ["FARGATE"],
   "cpu": "256",
   "memory": "512",
-  "executionRoleArn": "arn:aws:iam::325866320827:role/CodeDeploy-Role-Lab14",
+  "executionRoleArn": "arn:aws:iam::325866320827:role/ecsTaskExecutionRole",
   "runtimePlatform": {
     "cpuArchitecture": "ARM64",
     "operatingSystemFamily": "LINUX"
