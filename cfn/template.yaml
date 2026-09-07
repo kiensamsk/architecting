@@ -348,14 +348,23 @@ Resources:
       DBSubnetGroupName: !Ref DBSubnetGroup
       PubliclyAccessible: false
 
-  # AuroraInstance2:
-  #   Type: 'AWS::RDS::DBInstance'
-  #   Properties:
-  #     DBClusterIdentifier: !Ref AuroraCluster
-  #     DBInstanceIdentifier: 'my-aurora-instance-2'
-  #     Engine: 'aurora-postgresql'
-  #     DBInstanceClass: db.t4g.medium
-  #     PubliclyAccessible: false
+  AuroraInstance2:
+    Type: 'AWS::RDS::DBInstance'
+    Properties:
+      DBClusterIdentifier: !Ref AuroraCluster
+      DBInstanceIdentifier: 'my-aurora-instance-2'
+      Engine: 'aurora-postgresql'
+      DBInstanceClass: db.t4g.medium
+      PubliclyAccessible: false
+  
+  AuroraInstance3:
+    Type: 'AWS::RDS::DBInstance'
+    Properties:
+      DBClusterIdentifier: !Ref AuroraCluster
+      DBInstanceIdentifier: 'my-aurora-instance-3'
+      Engine: 'aurora-postgresql'
+      DBInstanceClass: db.t4g.medium
+      PubliclyAccessible: false
 
   # ── ALB ───────────────────────────────────────────────────────────────────────
   ALB:
